@@ -12,6 +12,8 @@ import {
   GET_SINGLE_PRODUCT_SUCCESS,
   GET_SINGLE_PRODUCT_ERROR,
 } from '../actions'
+import { productsData } from '../assets/products/productsData'
+import { singleProductData } from '../assets/products/singleProductData'
 
 const initialState = {
   isSidebarOpen: false,
@@ -41,7 +43,7 @@ export const ProductsProvider = ({ children }) => {
     try {
       const response = await axios.get(url)
       const products = response.data
-      dispatch({ type: GET_PRODUCTS_SUCCESS, payload: products })
+      dispatch({ type: GET_PRODUCTS_SUCCESS, payload: productsData })
     } catch (error) {
       dispatch({ type: GET_PRODUCTS_ERROR })
     }
@@ -51,7 +53,7 @@ export const ProductsProvider = ({ children }) => {
     try {
       const response = await axios.get(url)
       const singleProduct = response.data
-      dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: singleProduct })
+      dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: singleProductData })
     } catch (error) {
       dispatch({ type: GET_SINGLE_PRODUCT_ERROR })
     }
